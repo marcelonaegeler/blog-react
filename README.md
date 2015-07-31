@@ -2,17 +2,26 @@
 A blog application to learn React.js
 
 ### Installation
-* Clone the repository
-	git clone https://github.com/marcelonaegeler/blog-react.git
+0. Clone the repository:
 
-* Go to de folder
-	cd blog-react
+		git clone https://github.com/marcelonaegeler/blog-react.git
 
-* Install Node.js dependencies
-	npm install
+0. Go to de folder:
 
-* Install Bower dependencies
-	bower install
+		cd blog-react
 
-* Run it!
-	node app.js
+0. Install Node.js dependencies:
+
+		npm install
+
+0. Install Bower dependencies:
+	
+		bower install
+
+0. Run it:
+
+		node app.js
+
+0. Go to app:
+
+		http://localhost:3000/
