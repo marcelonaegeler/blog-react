@@ -31,7 +31,7 @@ module.exports = function() {
 		posts.find({}, { sort: { date: -1 } }, function(err, docs) {
 			if(err) throw err;
 			return res.send(docs);
-		})
+		});
 		
 	});
 

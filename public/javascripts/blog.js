@@ -33,7 +33,6 @@ var PostForm = React.createClass({
   }
 });
 
-
 var PostBox = React.createClass({
   getContent: function() {
     var self = this;
@@ -51,6 +50,8 @@ var PostBox = React.createClass({
     this.setState({ posts: posts });
   }
   , deleteHandler: function(event) {
+    if(!confirm("Deseja mesmo excluir este post?")) return false;
+
     var index = +event.target.value;
     if(!index && index != 0) return false;
 
@@ -93,17 +94,17 @@ var PostBox = React.createClass({
       
       return (
         <div className="post" key={index}>
-          <button onClick={self.deleteHandler} value={index}>Delete</button>
+          <button onClick={self.deleteHandler} value={index} className="material-icons btn btn-close">close</button>
           <h2 className="heading-2">{post.title}</h2>
           <p className="author">
-            <a href="">{post.author}</a>{strDate ? strDate : ''}.
+            <a href="/author/id">{post.author}</a>{strDate ? strDate : ''}.
           </p>
           <div className="content">{post.content.split('\n').map(renderParagraphs)}</div>
         </div>
       );
     };
     return (
-      <div>
+      <div className="posts-area">
         <PostForm onPostSubmit={this.postSubmitHandler} />
         {this.state.posts.map(renderPosts)}
       </div>
@@ -111,8 +112,29 @@ var PostBox = React.createClass({
   }
 });
 
+var UserBar = React.createClass({
+  render: function() {
+    return (
+      <div className="userbar">
+        <a href="">Text</a>
+
+      </div>
+    );
+  }
+})
+
+var Blog = React.createClass({
+  render: function() {
+    return (
+      <div>
+        <UserBar />
+        <PostBox url="/api/posts" />
+      </div>
+    );
+  }
+});
 
 React.render(
-  <PostBox url="/api/posts" />
+  <Blog />
   , document.body.querySelector('.body')
 );
